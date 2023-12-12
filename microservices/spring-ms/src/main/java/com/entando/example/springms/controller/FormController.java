@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -71,6 +72,19 @@ public class FormController {
         log.debug("REST request to get a page of Forms");
         Page<Form> page = formService.findAll(pageable);
         return ResponseEntity.ok().body(page.getContent());
+    }
+
+    @GetMapping("/forms-structure/{id}")
+    public ResponseEntity<Object> getForm(@PathVariable String id) {
+        log.debug("REST request to get Form : {}", id);
+        if (!formRepository.existsById(id)) {
+            JSONObject error = new JSONObject("{'error': 'Form not found'}");
+            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
+        }
+        Optional<Form> form = formService.findOne(id);
+        return ResponseEntity
+                .ok()
+                .body(form.orElse(null));
     }
 
     @DeleteMapping("/forms-structure/{id}")
