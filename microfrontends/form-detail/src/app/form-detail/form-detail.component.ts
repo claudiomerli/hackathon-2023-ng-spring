@@ -45,17 +45,17 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy{
     }
     if(!!this.formId){
       let objectToSave = {
-        name: this.nomeForm,
-        structure: JSON.stringify(this.form)
-      }
-      this.formDetailsServices.postForm(objectToSave).subscribe(() => {location.href = "https://entando.eng-entando.com/entando-de-app"})
-    } else {
-      let objectToSave = {
         id: this.formId,
         name: this.nomeForm,
         structure: JSON.stringify(this.form)
       }
       this.formDetailsServices.putForm(objectToSave).subscribe(() => {location.href = "https://entando.eng-entando.com/entando-de-app"})
+    } else {
+      let objectToSave = {
+        name: this.nomeForm,
+        structure: JSON.stringify(this.form)
+      }
+      this.formDetailsServices.postForm(objectToSave).subscribe(() => {location.href = "https://entando.eng-entando.com/entando-de-app"})
     }
   }
 
