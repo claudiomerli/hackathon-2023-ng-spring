@@ -1,5 +1,0 @@
-name: spring-ms
-descriptorVersion: v5
-dbms: none
-image: apreziosoentando/spring-ms:0.0.1-SNAPSHOT
-healthCheckPath: /api/health

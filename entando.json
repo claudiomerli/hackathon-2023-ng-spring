@@ -52,5 +52,6 @@
     "name": "hackathon-2023-ng-spring",
     "version": "0.0.1",
     "description": "hackathon-2023-ng-spring description",
-    "type": "bundle"
+    "type": "bundle",
+    "descriptorVersion": "v5"
 }
