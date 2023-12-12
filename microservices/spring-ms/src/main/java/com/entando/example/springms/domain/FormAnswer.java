@@ -31,5 +31,6 @@ public class FormAnswer {
     @ManyToOne
     private Form form;
 
-    private Boolean deleted;
+    @Builder.Default
+    private Boolean deleted = false;
 }

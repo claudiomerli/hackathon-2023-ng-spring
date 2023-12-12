@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 export interface Form {
-  id?: number;
+  id?: string;
   name?: string;
   structure?: string;
   answerCount?: number
