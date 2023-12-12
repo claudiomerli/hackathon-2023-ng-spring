@@ -55,6 +55,7 @@
             "type": "widget",
             "group": "free",
             "publicFolder": "public",
+            "buildFolder": "dist/answer-list",
             "titles": {
                 "en": "answer-list",
                 "it": "answer-list"
