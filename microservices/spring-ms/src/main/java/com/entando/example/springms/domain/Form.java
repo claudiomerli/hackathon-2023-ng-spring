@@ -3,9 +3,16 @@ package com.entando.example.springms.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.*;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UuidGenerator;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
 public class Form {
     @UuidGenerator
     @Id
@@ -14,27 +21,7 @@ public class Form {
     @Column(columnDefinition = "text")
     private String structure;
 
-    public String getId() {
-        return id;
-    }
+    @Formula("(select count(*) from form_answer fa where fa.form_id = id)")
+    private Integer answerCount;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStructure() {
-        return structure;
-    }
-
-    public void setStructure(String structure) {
-        this.structure = structure;
-    }
 }
