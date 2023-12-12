@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormService } from './services/form-service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
     NgbAlertModule,
     NgbPaginationModule
   ],
-  providers: [FormService]
+  providers: [FormService, ConfirmationDialogService]
 })
 export class AppModule {
   constructor(private injector: Injector) {}
