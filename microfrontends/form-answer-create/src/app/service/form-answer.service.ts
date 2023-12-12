@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const envBaseUrl = "https://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring";
-const localBaseUrl = "http://localhost:8081";
+const envBaseUrl = "https://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms";
+// const localBaseUrl = "http://localhost:8081";
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,10 @@ export class FormAnswerService {
   }
 
   getFormStructure(id: string): Observable<any> {
-    return this.httpClient.get<any>(localBaseUrl+ `/api/form-structure`)
+    return this.httpClient.get<any>(envBaseUrl+ `/api/form-structure`)
   }
 
   postFormAnswer(id: string, body: any){
-    return this.httpClient.post<any>(localBaseUrl+`/the/endpoint`, body)
+    return this.httpClient.post<any>(envBaseUrl+`/the/endpoint`, body)
   }
 }

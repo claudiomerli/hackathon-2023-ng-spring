@@ -26,7 +26,7 @@ export class FormLoaderComponent implements OnInit {
 
   loadForm() {
     this.formAnswerService.getFormStructure(this.idForm).subscribe({
-      next: (value: any) => this.formJson = value,
+      next: (value: any) => this.formJson = value.structureForm,
       error: (err: any) => console.log(err)
     })
   }
