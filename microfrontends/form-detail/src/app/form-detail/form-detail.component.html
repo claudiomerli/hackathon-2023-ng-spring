@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <form role="form" class="form-class">
+    <div class="form-content">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"></span>
+          <input type="text" [(ngModel)]="nomeForm" name="nomeForm" class="form-control"
+                 id="nomeForm" [placeholder]="'Inserisci il nome della form'">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <form-builder [form]="form" (change?)="onChange($event)"></form-builder>
+    </div>
+  </div>
+  <hr class="linea">
+  <button type="button" class="btn btn-success" (click)="salvaForm()" [disabled]="nomeForm==''">Salva Form</button>
+  <div class="well jsonviewer">
+    <pre id="json"><code class="language-json" #json></code></pre>
+  </div>
+</div>
