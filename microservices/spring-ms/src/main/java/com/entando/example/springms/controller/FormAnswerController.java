@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -49,6 +50,19 @@ public class FormAnswerController {
         log.debug("REST request to get a page of FormAnswers");
         Page<FormAnswer> page = formAnswerService.findAll(pageable);
         return ResponseEntity.ok().body(page.getContent());
+    }
+
+    @GetMapping("/forms-answers/{id}")
+    public ResponseEntity<Object> getForm(@PathVariable String id) {
+        log.debug("REST request to get FormAnswer : {}", id);
+        if (!formAnswerRepository.existsById(id)) {
+            JSONObject error = new JSONObject("{'error': 'Form answer not found'}");
+            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
+        }
+        Optional<FormAnswer> formAnswer = formAnswerService.findOne(id);
+        return ResponseEntity
+                .ok()
+                .body(formAnswer.orElse(null));
     }
 
     @DeleteMapping("/forms-answers/{id}")
