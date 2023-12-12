@@ -11,13 +11,17 @@ Si è verificato un errore nella ricerca dei form!
     <tr>
       <th scope="col">Nome</th>
       <th scope="col">Count</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of list">
       <td>{{item.name}}</td>
       <td>{{item.answerCount}}</td>
-      <td><a href="{{item.id}}"><i class="bi bi-search"></i></a></td>
+      <td>
+        <a href="{{editURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-pencil-fill"></i></a>
+        <a href="{{detailURL}}{{item.id}}"><i class="bi bi-search"></i></a>
+      </td>
     </tr>
   </tbody>
 </table>
