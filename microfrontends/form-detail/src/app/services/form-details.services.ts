@@ -12,7 +12,7 @@ export class FormDetailsServices {
    * POST
    */
   public postForm(body: any, observe?: 'events', reportProgress?: boolean) {
-    return this.httpClient.post("entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure",
+    return this.httpClient.post("http://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure",
       body,
       {
         reportProgress: reportProgress
@@ -21,7 +21,7 @@ export class FormDetailsServices {
   }
 
   public putForm(body: any, observe?: 'events', reportProgress?: boolean) {
-    return this.httpClient.put(`entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure/${body.formId}`,
+    return this.httpClient.put(`http://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure/${body.id}`,
       body,
       {
         reportProgress: reportProgress
@@ -30,7 +30,7 @@ export class FormDetailsServices {
   }
 
   public getForm(formId: any, observe?: 'events', reportProgress?: boolean) {
-    return this.httpClient.get(`entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure/${formId}`,
+    return this.httpClient.get(`http://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure/${formId}`,
     );
   }
 }
