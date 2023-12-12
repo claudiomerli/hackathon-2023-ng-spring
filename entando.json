@@ -46,6 +46,18 @@
                     "serviceName": "spring-ms"
                 }
             ]
+        },
+        {
+            "name": "answer-list",
+            "customElement": "answer-list",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "answer-list",
+                "it": "answer-list"
+            }
         }
     ],
     "svc": [],
