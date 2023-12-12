@@ -1,13 +1,15 @@
 package com.entando.example.springms.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import org.hibernate.annotations.UuidGenerator;
 
+@Entity
 public class FormAnswer {
-    @UuidGenerator
     @Id
+    @UuidGenerator
     private String id;
     private String name;
     @Column(columnDefinition = "text")
