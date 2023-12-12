@@ -2,6 +2,7 @@ package com.entando.example.springms.service.impl;
 
 import com.entando.example.springms.domain.FormAnswer;
 import com.entando.example.springms.repository.FormAnswerRepository;
+import com.entando.example.springms.repository.FormRepository;
 import com.entando.example.springms.service.FormAnswerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,23 +19,29 @@ public class FormAnswerServiceImpl implements FormAnswerService {
     private final Logger log = LoggerFactory.getLogger(FormAnswerServiceImpl.class);
 
     private final FormAnswerRepository formAnswerRepository;
+    private final FormRepository formRepository;
 
-    public FormAnswerServiceImpl(FormAnswerRepository formAnswerRepository) {
+    public FormAnswerServiceImpl(FormAnswerRepository formAnswerRepository, FormRepository formRepository) {
         this.formAnswerRepository = formAnswerRepository;
+        this.formRepository = formRepository;
     }
 
     @Override
     public FormAnswer save(FormAnswer formAnswer) {
         log.debug("Request to save FormAnswer : {}", formAnswer);
         formAnswer = formAnswerRepository.save(formAnswer);
-        return formAnswer;
+        FormAnswer result = formAnswer;
+        formRepository.findById(formAnswer.getForm().getId()).ifPresent(result::setForm);
+        return result;
     }
 
     @Override
     public FormAnswer update(FormAnswer formAnswer) {
         log.debug("Request to update FormAnswer : {}", formAnswer);
         formAnswer = formAnswerRepository.save(formAnswer);
-        return formAnswer;
+        FormAnswer result = formAnswer;
+        formRepository.findById(formAnswer.getForm().getId()).ifPresent(result::setForm);
+        return result;
     }
 
     @Override
