@@ -16,10 +16,10 @@ export class FormAnswerService {
   }
 
   getFormStructure(id: string): Observable<any> {
-    return this.httpClient.get<any>(envBaseUrl+ `/api/form-structure`)
+    return this.httpClient.get<any>(envBaseUrl+ `/api/forms-structure/`+id)
   }
 
   postFormAnswer(id: string, body: any){
-    return this.httpClient.post<any>(envBaseUrl+`/the/endpoint`, body)
+    return this.httpClient.post<any>(envBaseUrl+`/api/forms-structure/`+id, body)
   }
 }
