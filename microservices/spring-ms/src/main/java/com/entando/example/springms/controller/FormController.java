@@ -3,17 +3,18 @@ package com.entando.example.springms.controller;
 import com.entando.example.springms.domain.Form;
 import com.entando.example.springms.repository.FormRepository;
 import com.entando.example.springms.service.FormService;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api")
@@ -36,10 +37,11 @@ public class FormController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/forms-structure")
-    public ResponseEntity<Form> createForm(@RequestBody Form form) throws Exception {
+    public ResponseEntity<Object> createForm(@RequestBody Form form) throws URISyntaxException {
         log.debug("REST request to save Form : {}", form);
         if (form.getId() != null) {
-            throw new Exception("A new form cannot already have an ID");
+            JSONObject error = new JSONObject("{'error': 'A new form cannot already have an ID'}");
+            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
         }
         Form result = formService.save(form);
         return ResponseEntity
@@ -48,22 +50,15 @@ public class FormController {
     }
 
     @PutMapping("/forms-structure/{id}")
-    public ResponseEntity<Form> updateForm(
+    public ResponseEntity<Object> updateForm(
             @PathVariable(value = "id", required = false) final String id,
             @RequestBody Form form
-    ) throws Exception {
+    ) {
         log.debug("REST request to update Form : {}, {}", id, form);
-        if (form.getId() == null) {
-            throw new Exception("Invalid id");
-        }
-        if (!Objects.equals(id, form.getId())) {
-            throw new Exception("Invalid ID");
-        }
-
         if (!formRepository.existsById(id)) {
-            throw new Exception("Entity not found");
+            JSONObject error = new JSONObject("{'error': 'Form not found'}");
+            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
         }
-
         Form result = formService.update(form);
         return ResponseEntity
                 .ok()
