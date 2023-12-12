@@ -3,7 +3,8 @@
         {
             "name": "spring-ms",
             "stack": "spring-boot",
-            "healthCheckPath": "/api/health"
+            "healthCheckPath": "/api/health",
+            "dbms": "postgresql"
         }
     ],
     "microfrontends": [
@@ -58,11 +59,25 @@
                 "en": "form-answer-create",
                 "it": "form-answer-create"
             }
+        },
+        {
+            "name": "answer-list",
+            "customElement": "answer-list",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "buildFolder": "dist/answer-list",
+            "titles": {
+                "en": "answer-list",
+                "it": "answer-list"
+            }
         }
     ],
     "svc": [],
     "name": "hackathon-2023-ng-spring",
     "version": "0.0.1",
     "description": "hackathon-2023-ng-spring description",
-    "type": "bundle"
+    "type": "bundle",
+    "descriptorVersion": "v5"
 }
