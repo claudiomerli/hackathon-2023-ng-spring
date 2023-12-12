@@ -1,1 +1,4 @@
 .idea
+.entando
+microservices/spring-ms/target
+/microservices/spring-ms/spring-ms.iml

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.25.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1702392229425-1" author="claudiomerli (generated)">
+        <createTable tableName="form">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_form"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="structure" type="text"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1702392229425-2" author="claudiomerli (generated)">
+        <createTable tableName="form_answer">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_formanswer"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="structure" type="text"/>
+            <column name="structure_form" type="text"/>
+            <column name="form_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1702392229425-3" author="claudiomerli (generated)">
+        <addForeignKeyConstraint baseColumnNames="form_id" baseTableName="form_answer"
+                                 constraintName="FK_FORMANSWER_ON_FORM" referencedColumnNames="id"
+                                 referencedTableName="form"/>
+    </changeSet>
+
+</databaseChangeLog>
