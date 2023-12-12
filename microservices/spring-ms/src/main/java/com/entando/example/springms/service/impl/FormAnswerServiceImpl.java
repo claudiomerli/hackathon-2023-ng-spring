@@ -53,6 +53,13 @@ public class FormAnswerServiceImpl implements FormAnswerService {
 
     @Override
     @Transactional(readOnly = true)
+    public Page<FormAnswer> findByFormId(String formId, Pageable pageable) {
+        log.debug("Request to get all FormAnswers filtered by formId");
+        return formAnswerRepository.findByFormId(formId, pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Optional<FormAnswer> findOne(String id) {
         log.debug("Request to get FormAnswer : {}", id);
         return formAnswerRepository.findById(id);
