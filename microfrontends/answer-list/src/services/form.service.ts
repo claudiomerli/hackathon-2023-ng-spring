@@ -14,7 +14,7 @@ export class FormService {
     return this.httpClient.get<any[]>("https://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure")
   }
 
-  public getAnswers(idForm: string) {
+  public getAnswers(idForm?: string) {
     return this.httpClient.get<any[]>("https://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-answers", {
       params: {
         idForm: idForm || ""
