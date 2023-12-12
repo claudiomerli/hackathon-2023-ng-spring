@@ -46,6 +46,19 @@
         "en": "form-list",
         "it": "form-list"
       }
+    },
+    {
+      "name": "form-detail",
+      "customElement": "form-detail",
+      "stack": "angular",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "buildFolder": "dist/form-detail",
+      "titles": {
+        "en": "form-detail",
+        "it": "form-detail"
+      }
     }
   ],
   "svc": [],

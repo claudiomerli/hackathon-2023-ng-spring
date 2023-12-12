@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -29,6 +30,7 @@ public class FormAnswerServiceImpl implements FormAnswerService {
     @Override
     public FormAnswer save(FormAnswer formAnswer) {
         log.debug("Request to save FormAnswer : {}", formAnswer);
+        formAnswer.setCreationDate(LocalDateTime.now());
         formAnswer = formAnswerRepository.save(formAnswer);
         FormAnswer result = formAnswer;
         formRepository.findById(formAnswer.getForm().getId()).ifPresent(result::setForm);
@@ -53,6 +55,13 @@ public class FormAnswerServiceImpl implements FormAnswerService {
 
     @Override
     @Transactional(readOnly = true)
+    public Page<FormAnswer> findByFormId(String formId, Pageable pageable) {
+        log.debug("Request to get all FormAnswers filtered by formId");
+        return formAnswerRepository.findByFormId(formId, pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Optional<FormAnswer> findOne(String id) {
         log.debug("Request to get FormAnswer : {}", id);
         return formAnswerRepository.findById(id);
@@ -60,7 +69,8 @@ public class FormAnswerServiceImpl implements FormAnswerService {
 
     @Override
     public void delete(String id) {
-        log.debug("Request to delete FormAnswer : {}", id);
-        formAnswerRepository.deleteById(id);
+        FormAnswer formAnswer = findOne(id).orElseThrow();
+        formAnswer.setDeleted(true);
+        this.formAnswerRepository.save(formAnswer);
     }
 }

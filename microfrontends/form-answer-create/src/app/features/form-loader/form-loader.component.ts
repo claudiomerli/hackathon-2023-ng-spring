@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormAnswerService} from "../../service/form-answer.service";
 import bootstrap4 from '@formio/bootstrap/bootstrap4';
 import { Formio } from 'formiojs';
@@ -10,59 +10,30 @@ import { Formio } from 'formiojs';
 })
 export class FormLoaderComponent implements OnInit {
 
-  formJson: any = {
-    "components": [
-      {
-        "type": "textfield",
-        "input": true,
-        "key": "name",
-        "label": "Name",
-        "placeholder": "Enter your name",
-        "validate": {
-          "required": true
-        }
-      },
-      {
-        "type": "email",
-        "input": true,
-        "key": "email",
-        "label": "Email",
-        "placeholder": "Enter your email",
-        "validate": {
-          "required": true,
-          "email": true
-        }
-      },
-      {
-        "type": "button",
-        "action": "submit",
-        "label": "Submit",
-        "theme": "primary"
-      }
-    ]
-  }
+  formJson: any
   showToast: boolean = false;
   toastHeader = 'Notifica';
   toastBody = 'Form salvato correttamente';
+  @Input() idForm: string = "";
 
   constructor(private formAnswerService: FormAnswerService) {
   }
 
   ngOnInit() {
     Formio.use(bootstrap4);
-    //this.loadForm()
+    this.loadForm()
   }
 
   loadForm() {
-    this.formAnswerService.getFormStructure("").subscribe({
-      next: (value: any) => this.formJson = value,
+    this.formAnswerService.getFormStructure(this.idForm).subscribe({
+      next: (value: any) => this.formJson = value.structureForm,
       error: (err: any) => console.log(err)
     })
   }
 
   submitAnswer(answerData: any){
-    console.log(answerData.data)
+    console.log(answerData)
     this.showToast = true;
-    // this.formAnswerService.postFormAnswer("", answerData.data).subscribe()
+    this.formAnswerService.postFormAnswer(this.idForm, answerData.data).subscribe()
   }
 }

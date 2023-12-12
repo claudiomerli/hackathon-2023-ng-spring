@@ -31,6 +31,8 @@ public interface FormAnswerService {
      */
     Page<FormAnswer> findAll(Pageable pageable);
 
+    Page<FormAnswer> findByFormId(String formId, Pageable pageable);
+
     /**
      * Get the "id" formAnswer.
      *

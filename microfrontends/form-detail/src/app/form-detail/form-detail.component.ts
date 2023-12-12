@@ -41,41 +41,48 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy{
   salvaForm(){
     if(!!this.jsonElement) {
       this.jsonElement.nativeElement.innerHTML = '';
-      this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(this.formio.form, null, 4)));
+      this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(this.form, null, 4)));
     }
     if(!!this.formId){
-      let objectToSave = {
-        name: this.nomeForm,
-        structure: JSON.stringify(this.form)
-      }
-      this.formDetailsServices.postForm(objectToSave).subscribe(() => {location.href = "https://entando.eng-entando.com/entando-de-app"})
-    } else {
       let objectToSave = {
         id: this.formId,
         name: this.nomeForm,
         structure: JSON.stringify(this.form)
       }
       this.formDetailsServices.putForm(objectToSave).subscribe(() => {location.href = "https://entando.eng-entando.com/entando-de-app"})
+    } else {
+      let objectToSave = {
+        name: this.nomeForm,
+        structure: JSON.stringify(this.form)
+      }
+      this.formDetailsServices.postForm(objectToSave).subscribe(() => {location.href = "https://entando.eng-entando.com/entando-de-app"})
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
   }
 
+
   ngOnDestroy(): void {
   }
 
   ngOnInit(): void {
-    this.formId = this.activatedRoute.snapshot.paramMap.get("formId")
-    if(!!this.formId){
+    const urlParams = new URLSearchParams(location.search);
+    this.formId = urlParams.get('idForm');
+
+    if(!!this.formId) {
       this.formDetailsServices.getForm(this.formId).pipe(
         tap((res: any) => {
           this.form = JSON.parse(res.structure);
+          this.nomeForm = res.name;
         })
       ).subscribe();
     }
   }
 
+  showHintMessage(){
+    return this.nomeForm=='' ? 'Inserisci il nome della form per salvarla' : '';
+  }
 
   protected readonly onmouseover = onmouseover;
 }

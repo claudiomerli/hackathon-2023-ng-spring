@@ -53,7 +53,8 @@ public class FormServiceImpl implements FormService {
 
     @Override
     public void delete(String id) {
-        log.debug("Request to delete Form : {}", id);
-        formRepository.deleteById(id);
+        Form form = findOne(id).orElseThrow();
+        form.setDeleted(true);
+        this.formRepository.save(form);
     }
 }
