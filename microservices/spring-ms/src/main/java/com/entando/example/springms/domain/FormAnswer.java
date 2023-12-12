@@ -17,7 +17,6 @@ public class FormAnswer {
     @Id
     @UuidGenerator
     private String id;
-    private String name;
     @Column(columnDefinition = "text")
     private String structure;
     @Column(columnDefinition = "text")
