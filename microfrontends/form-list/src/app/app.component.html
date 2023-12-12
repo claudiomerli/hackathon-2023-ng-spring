@@ -6,7 +6,7 @@ Si è verificato un errore nella ricerca dei form!
 	Nessun form da visualizzare!
 </ngb-alert>
 
-<table *ngIf="list.length > 0 && error == false" class="table table-striped">
+<table *ngIf="list.length > 0 && error == false" class="table table-striped survey-column">
   <thead>
     <tr>
       <th scope="col">Nome</th>
@@ -18,7 +18,7 @@ Si è verificato un errore nella ricerca dei form!
     <tr *ngFor="let item of list">
       <td>{{item.name}}</td>
       <td>{{item.answerCount}}</td>
-      <td>
+      <td class="ico-columns">
         <a href="{{editURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-pencil-fill"></i></a>
         <a href="{{detailURL}}{{item.id}}"><i class="bi bi-search"></i></a>
       </td>
@@ -26,3 +26,17 @@ Si è verificato un errore nella ricerca dei form!
   </tbody>
 </table>
 
+<div class="d-flex justify-content-between p-2">
+	<ngb-pagination
+		[collectionSize]="collectionSize"
+		[(page)]="page"
+		[pageSize]="pageSize"
+		(pageChange)="getList()">
+	</ngb-pagination>
+
+    <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="{{newURL}}">
+      <i class="bi bi-card-list"></i>Crea questionario
+    </a>
+
+
+</div>
