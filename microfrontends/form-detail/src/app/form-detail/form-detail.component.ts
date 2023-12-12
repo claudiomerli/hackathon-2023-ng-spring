@@ -41,7 +41,7 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy{
   salvaForm(){
     if(!!this.jsonElement) {
       this.jsonElement.nativeElement.innerHTML = '';
-      this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(this.formio.form, null, 4)));
+      this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(this.form, null, 4)));
     }
     if(!!this.formId){
       let objectToSave = {
