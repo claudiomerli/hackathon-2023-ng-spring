@@ -46,6 +46,18 @@
                     "serviceName": "spring-ms"
                 }
             ]
+        },
+        {
+            "name": "form-answer-create",
+            "customElement": "form-answer-create",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "form-answer-create",
+                "it": "form-answer-create"
+            }
         }
     ],
     "svc": [],
