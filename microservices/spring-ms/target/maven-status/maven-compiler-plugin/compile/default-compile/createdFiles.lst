@@ -1,3 +1,13 @@
-com/entando/example/springms/controller/TemplateController$MyResponse.class
-com/entando/example/springms/SpringMsApplication.class
-com/entando/example/springms/controller/TemplateController.class
+com\entando\example\springms\controller\FormController.class
+com\entando\example\springms\domain\FormAnswer.class
+com\entando\example\springms\domain\Form.class
+com\entando\example\springms\controller\FormAnswerController.class
+com\entando\example\springms\service\impl\FormServiceImpl.class
+com\entando\example\springms\service\FormAnswerService.class
+com\entando\example\springms\controller\TemplateController$MyResponse.class
+com\entando\example\springms\repository\FormAnswerRepository.class
+com\entando\example\springms\repository\FormRepository.class
+com\entando\example\springms\service\impl\FormAnswerServiceImpl.class
+com\entando\example\springms\service\FormService.class
+com\entando\example\springms\controller\TemplateController.class
+com\entando\example\springms\SpringMsApplication.class
