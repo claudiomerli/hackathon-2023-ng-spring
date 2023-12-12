@@ -1,5 +1,6 @@
 package com.entando.example.springms.service.impl;
 
+import com.entando.example.springms.domain.Form;
 import com.entando.example.springms.domain.FormAnswer;
 import com.entando.example.springms.repository.FormAnswerRepository;
 import com.entando.example.springms.repository.FormRepository;
@@ -67,7 +68,8 @@ public class FormAnswerServiceImpl implements FormAnswerService {
 
     @Override
     public void delete(String id) {
-        log.debug("Request to delete FormAnswer : {}", id);
-        formAnswerRepository.deleteById(id);
+        FormAnswer formAnswer = findOne(id).orElseThrow();
+        formAnswer.setDeleted(true);
+        this.formAnswerRepository.save(formAnswer);
     }
 }
