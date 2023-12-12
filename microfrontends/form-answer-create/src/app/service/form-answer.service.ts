@@ -19,7 +19,11 @@ export class FormAnswerService {
     return this.httpClient.get<any>(envBaseUrl+ `/api/forms-structure/`+id)
   }
 
-  postFormAnswer(id: string, body: any){
-    return this.httpClient.post<any>(envBaseUrl+`/api/forms-structure/`+id, body)
+  getAnswer(id: string){
+    return this.httpClient.get<any>(envBaseUrl+ `/api/forms-answers/`+id)
+  }
+
+  postFormAnswer(body: any){
+    return this.httpClient.post<any>(envBaseUrl+`/api/forms-answers/`, body)
   }
 }

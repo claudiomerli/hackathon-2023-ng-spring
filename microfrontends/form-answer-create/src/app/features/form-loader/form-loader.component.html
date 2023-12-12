@@ -2,5 +2,5 @@
     {{ toastBody }}
 </ngb-toast>
 
-<formio  *ngIf="formJson" [form]="formJson" (submit)="submitAnswer($event)"></formio>
+<formio  *ngIf="formStruct" [form]="formStruct" (submit)="submitAnswer($event)"></formio>
 

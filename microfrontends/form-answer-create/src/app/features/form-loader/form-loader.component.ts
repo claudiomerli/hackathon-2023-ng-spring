@@ -10,30 +10,45 @@ import { Formio } from 'formiojs';
 })
 export class FormLoaderComponent implements OnInit {
 
-  formJson: any
+  formStruct: any
   showToast: boolean = false;
-  toastHeader = 'Notifica';
   toastBody = 'Form salvato correttamente';
+
   @Input() idForm: string = "";
+  @Input() idAnswer: string = "";
 
   constructor(private formAnswerService: FormAnswerService) {
   }
 
   ngOnInit() {
     Formio.use(bootstrap4);
-    this.loadForm()
+    if(this.idForm){
+      this.loadForm()
+    }else{
+      this.loadCompiledForm()
+    }
   }
 
   loadForm() {
     this.formAnswerService.getFormStructure(this.idForm).subscribe({
-      next: (value: any) => this.formJson = value.structureForm,
+      next: (value: any) => this.formStruct = JSON.parse(value.structure),
       error: (err: any) => console.log(err)
     })
+  }
+
+  loadCompiledForm() {
+    this.formAnswerService.getAnswer(this.idAnswer).subscribe(value => console.log(value))
+  }
+
+
+  generateBody(answerData: any){
+    return {structureForm: this.formStruct, structure:answerData, formId: this.idForm  };
   }
 
   submitAnswer(answerData: any){
     console.log(answerData)
     this.showToast = true;
-    this.formAnswerService.postFormAnswer(this.idForm, answerData.data).subscribe()
+    let /*the*/ body = this.generateBody(answerData.data)//hit the floor
+    this.formAnswerService.postFormAnswer(body).subscribe( () => this.showToast = true )
   }
 }
