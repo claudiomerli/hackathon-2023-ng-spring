@@ -33,13 +33,6 @@ java 17 version is required
   "structure" : "...."
 }
 ```
-- PUT /forms-answers/{id}
-- ```json
-{
-"idForm": "123",
-"structure" : "...."
-}
-```
 - DELETE /forms-answers/{id}
 
 
