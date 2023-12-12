@@ -11,7 +11,7 @@ export class FormAnswerService {
   }
 
   getFormStructure(id: string): Observable<any> {
-    return this.httpClient.get<any>(`[TO_DEFINE]/the/endpoint`)
+    return this.httpClient.get<any>(`[TO_DEFINE]/api/form-structure`)
   }
 
   postFormAnswer(id: string, body: any){
