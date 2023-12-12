@@ -1,1 +1,6 @@
-<formio  *ngIf="formJson" [form]="formJson"></formio>
+<ngb-toast *ngIf="showToast" [autohide]="true"  style="background-color: #28a745; color: white" [delay]="5000" (hidden)="showToast = false">
+    {{ toastBody }}
+</ngb-toast>
+
+<formio  *ngIf="formJson" [form]="formJson" (submit)="submitAnswer($event)"></formio>
+

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FromAnswerService} from "../../service/from-answer.service";
+import {FormAnswerService} from "../../service/form-answer.service";
 import bootstrap4 from '@formio/bootstrap/bootstrap4';
 import { Formio } from 'formiojs';
 
@@ -41,8 +41,11 @@ export class FormLoaderComponent implements OnInit {
       }
     ]
   }
+  showToast: boolean = false;
+  toastHeader = 'Notifica';
+  toastBody = 'Form salvato correttamente';
 
-  constructor(private formAnswerService: FromAnswerService) {
+  constructor(private formAnswerService: FormAnswerService) {
   }
 
   ngOnInit() {
@@ -55,5 +58,11 @@ export class FormLoaderComponent implements OnInit {
       next: (value: any) => this.formJson = value,
       error: (err: any) => console.log(err)
     })
+  }
+
+  submitAnswer(answerData: any){
+    console.log(answerData.data)
+    this.showToast = true;
+    // this.formAnswerService.postFormAnswer("", answerData.data).subscribe()
   }
 }

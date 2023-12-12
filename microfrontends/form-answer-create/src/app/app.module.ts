@@ -6,17 +6,23 @@ import { FormLoaderComponent } from './features/form-loader/form-loader.componen
 import {FormioAppConfig, FormioModule} from "@formio/angular";
 import {HttpClientModule} from "@angular/common/http";
 import {AppConfig} from "./config/formio-config";
+import { FormAnswerVisualizerComponent } from './features/form-answer-visualizer/form-answer-visualizer.component';
+import { ToastComponent } from './features/common/toast/toast.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormLoaderComponent
+    FormLoaderComponent,
+    FormAnswerVisualizerComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
     FormioModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [
     {provide: FormioAppConfig, useValue: AppConfig}
