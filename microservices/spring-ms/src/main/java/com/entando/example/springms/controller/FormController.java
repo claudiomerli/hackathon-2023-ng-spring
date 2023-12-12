@@ -3,6 +3,8 @@ package com.entando.example.springms.controller;
 import com.entando.example.springms.domain.Form;
 import com.entando.example.springms.repository.FormRepository;
 import com.entando.example.springms.service.FormService;
+import com.entando.example.springms.service.dto.FormDTO;
+import jakarta.validation.Valid;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,18 +35,14 @@ public class FormController {
     /**
      * {@code POST  /forms} : Create a new form.
      *
-     * @param form the formDTO to create.
+     * @param formDTO the formDTO to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new formDTO, or with status {@code 400 (Bad Request)} if the form has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/forms-structure")
-    public ResponseEntity<Object> createForm(@RequestBody Form form) throws URISyntaxException {
-        log.debug("REST request to save Form : {}", form);
-        if (form.getId() != null) {
-            JSONObject error = new JSONObject("{'error': 'A new form cannot already have an ID'}");
-            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
-        }
-        Form result = formService.save(form);
+    public ResponseEntity<Object> createForm(@Valid @RequestBody FormDTO formDTO) throws URISyntaxException {
+        log.debug("REST request to save Form : {}", formDTO);
+        Form result = formService.save(formDTO.toForm());
         return ResponseEntity
                 .created(new URI("/api/forms-structure/" + result.getId()))
                 .body(result);
@@ -53,18 +51,19 @@ public class FormController {
     @PutMapping("/forms-structure/{id}")
     public ResponseEntity<Object> updateForm(
             @PathVariable(value = "id", required = false) final String id,
-            @RequestBody Form form
+            @Valid @RequestBody FormDTO formDTO
     ) {
-        log.debug("REST request to update Form : {}, {}", id, form);
+        log.debug("REST request to update Form : {}, {}", id, formDTO);
         if (!formRepository.existsById(id)) {
             JSONObject error = new JSONObject("{'error': 'Form not found'}");
             return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
         }
+        Form form = formDTO.toForm();
         form.setId(id);
-        Form result = formService.update(form);
+        form = formService.update(form);
         return ResponseEntity
                 .ok()
-                .body(result);
+                .body(form);
     }
 
     @GetMapping("/forms-structure")

@@ -3,6 +3,8 @@ package com.entando.example.springms.controller;
 import com.entando.example.springms.domain.FormAnswer;
 import com.entando.example.springms.repository.FormAnswerRepository;
 import com.entando.example.springms.service.FormAnswerService;
+import com.entando.example.springms.service.dto.FormAnswerDTO;
+import jakarta.validation.Valid;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,13 +35,9 @@ public class FormAnswerController {
     }
 
     @PostMapping("/forms-answers")
-    public ResponseEntity<Object> createFormAnswer(@RequestBody FormAnswer formAnswer) throws URISyntaxException {
-        log.debug("REST request to save FormAnswer : {}", formAnswer);
-        if (formAnswer.getId() != null) {
-            JSONObject error = new JSONObject("{'error': 'A new formAnswer cannot already have an ID'}");
-            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
-        }
-        FormAnswer result = formAnswerService.save(formAnswer);
+    public ResponseEntity<Object> createFormAnswer(@Valid @RequestBody FormAnswerDTO formAnswerDTO) throws URISyntaxException {
+        log.debug("REST request to save FormAnswer : {}", formAnswerDTO);
+        FormAnswer result = formAnswerService.save(formAnswerDTO.toFormAnswer());
         return ResponseEntity
                 .created(new URI("/api/forms-answers/" + result.getId()))
                 .body(result);
