@@ -1,9 +1,0 @@
-{
-    "systemParams": {
-        "api": {
-            "spring-api": {
-                "url": "http://localhost:8081"
-            }
-        }
-    }
-}
