@@ -9,52 +9,13 @@
     ],
     "microfrontends": [
         {
-            "name": "form-renderer",
-            "customElement": "form-renderer",
-            "stack": "angular",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "titles": {
-                "en": "form-renderer",
-                "it": "form-renderer"
-            },
-            "buildFolder": "dist/form-renderer",
-            "apiClaims": [
-                {
-                    "name": "spring-api",
-                    "type": "internal",
-                    "serviceName": "spring-ms"
-                }
-            ]
-        },
-        {
-            "name": "form-generator",
-            "customElement": "form-generator",
-            "stack": "angular",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "titles": {
-                "en": "form-generator",
-                "it": "form-generator"
-            },
-            "buildFolder": "dist/form-generator",
-            "apiClaims": [
-                {
-                    "name": "spring-api",
-                    "type": "internal",
-                    "serviceName": "spring-ms"
-                }
-            ]
-        },
-        {
             "name": "form-answer-create",
             "customElement": "form-answer-create",
             "stack": "angular",
             "type": "widget",
             "group": "free",
             "publicFolder": "public",
+            "buildFolder": "dist/form-answer-create",
             "titles": {
                 "en": "form-answer-create",
                 "it": "form-answer-create"
