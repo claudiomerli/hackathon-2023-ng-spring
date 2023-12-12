@@ -46,9 +46,9 @@ public class FormAnswerController {
     }
 
     @GetMapping("/forms-answers")
-    public ResponseEntity<List<FormAnswer>> getAllFormAnswers(Pageable pageable) {
+    public ResponseEntity<List<FormAnswer>> getAllFormAnswers(@RequestParam(required = false) String idForm, Pageable pageable) {
         log.debug("REST request to get a page of FormAnswers");
-        Page<FormAnswer> page = formAnswerService.findAll(pageable);
+        Page<FormAnswer> page = (null != idForm && !idForm.isEmpty()) ? formAnswerService.findByFormId(idForm,pageable) : formAnswerService.findAll(pageable);
         return ResponseEntity.ok().body(page.getContent());
     }
 
