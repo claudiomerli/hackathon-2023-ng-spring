@@ -15,16 +15,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class FormAnswerController {
     private final Logger log = LoggerFactory.getLogger(FormAnswerController.class);
 
     private final FormAnswerService formAnswerService;
 
-    private final FormAnswerRepository formAnswerRepository;
-
-    public FormAnswerController(FormAnswerService formAnswerService, FormAnswerRepository formAnswerRepository) {
+    public FormAnswerController(FormAnswerService formAnswerService) {
         this.formAnswerService = formAnswerService;
-        this.formAnswerRepository = formAnswerRepository;
     }
 
     @PostMapping("/forms-answers")
