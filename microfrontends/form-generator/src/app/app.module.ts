@@ -19,6 +19,7 @@ export class AppModule {
 
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
+    // @ts-ignore
     customElements.define('form-generator', el);
   }
 }
