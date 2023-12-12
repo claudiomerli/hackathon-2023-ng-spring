@@ -1,0 +1,28 @@
+<ngb-alert *ngIf="error" type="danger" [dismissible]="false">
+Si è verificato un errore nella ricerca dei form!
+</ngb-alert>
+
+<ngb-alert *ngIf="list.length == 0 && error == false" type="info" [dismissible]="false">
+	Nessun form da visualizzare!
+</ngb-alert>
+
+<table *ngIf="list.length > 0 && error == false" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Count</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list">
+      <td>{{item.name}}</td>
+      <td>{{item.answerCount}}</td>
+      <td>
+        <a href="{{editURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-pencil-fill"></i></a>
+        <a href="{{detailURL}}{{item.id}}"><i class="bi bi-search"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

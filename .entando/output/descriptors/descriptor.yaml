@@ -1,9 +1,0 @@
-name: hackathon-2023-ng-spring
-description: hackathon-2023-ng-spring description
-components:
-  widgets:
-    - widgets/form-renderer.yaml
-    - widgets/form-generator.yaml
-  plugins:
-    - plugins/spring-ms.yaml
-descriptorVersion: v5
