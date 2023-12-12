@@ -15,6 +15,7 @@
             "type": "widget",
             "group": "free",
             "publicFolder": "public",
+            "buildFolder": "dist/form-answer-create",
             "titles": {
                 "en": "form-answer-create",
                 "it": "form-answer-create"
