@@ -83,7 +83,7 @@ public class FormController {
         Optional<Form> form = formService.findOne(id);
         return ResponseEntity
                 .ok()
-                .body(form.orElse(null));
+                .body(form.orElseThrow());
     }
 
     @DeleteMapping("/forms-structure/{id}")

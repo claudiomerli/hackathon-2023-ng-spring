@@ -7,7 +7,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.annotations.Where;
+
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -25,6 +26,7 @@ public class FormAnswer {
     private String structure;
     @Column(columnDefinition = "text")
     private String structureForm;
+    private LocalDateTime creationDate;
 
     @ManyToOne
     private Form form;
