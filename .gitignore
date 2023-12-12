@@ -2,3 +2,5 @@
 .entando
 microservices/spring-ms/target
 microservices/spring-ms/target
+.idea
+.idea
