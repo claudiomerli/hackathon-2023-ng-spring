@@ -1,6 +1,7 @@
 package com.entando.example.springms.controller;
 
 import com.entando.example.springms.domain.FormAnswer;
+import com.entando.example.springms.repository.FormAnswerRepository;
 import com.entando.example.springms.service.FormAnswerService;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -23,8 +24,11 @@ public class FormAnswerController {
 
     private final FormAnswerService formAnswerService;
 
-    public FormAnswerController(FormAnswerService formAnswerService) {
+    private final FormAnswerRepository formAnswerRepository;
+
+    public FormAnswerController(FormAnswerService formAnswerService, FormAnswerRepository formAnswerRepository) {
         this.formAnswerService = formAnswerService;
+        this.formAnswerRepository = formAnswerRepository;
     }
 
     @PostMapping("/forms-answers")
@@ -48,8 +52,12 @@ public class FormAnswerController {
     }
 
     @DeleteMapping("/forms-answers/{id}")
-    public ResponseEntity<Void> deleteFormAnswer(@PathVariable String id) {
+    public ResponseEntity<Object> deleteFormAnswer(@PathVariable String id) {
         log.debug("REST request to delete FormAnswer : {}", id);
+        if (!formAnswerRepository.existsById(id)) {
+            JSONObject error = new JSONObject("{'error': 'Form answer not found'}");
+            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
+        }
         formAnswerService.delete(id);
         return ResponseEntity
                 .noContent()

@@ -59,6 +59,7 @@ public class FormController {
             JSONObject error = new JSONObject("{'error': 'Form not found'}");
             return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
         }
+        form.setId(id);
         Form result = formService.update(form);
         return ResponseEntity
                 .ok()
@@ -73,8 +74,12 @@ public class FormController {
     }
 
     @DeleteMapping("/forms-structure/{id}")
-    public ResponseEntity<Void> deleteForm(@PathVariable String id) {
+    public ResponseEntity<Object> deleteForm(@PathVariable String id) {
         log.debug("REST request to delete Form : {}", id);
+        if (!formRepository.existsById(id)) {
+            JSONObject error = new JSONObject("{'error': 'Form not found'}");
+            return new ResponseEntity<>(error.toMap(), HttpStatus.BAD_REQUEST);
+        }
         formService.delete(id);
         return ResponseEntity
                 .noContent()
