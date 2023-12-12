@@ -27,6 +27,7 @@ public class Form {
     @Formula("(select count(*) from form_answer fa where fa.form_id = id)")
     private Integer answerCount;
 
-    private Boolean deleted;
+    @Builder.Default
+    private Boolean deleted = false;
 
 }
