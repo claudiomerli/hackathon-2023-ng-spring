@@ -17,6 +17,6 @@ export class AppModule {
 
   ngDoBootstrap() {
     const el = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('form-answer-create', el);
+    customElements.define('form-amswer-create', el as any);
   }
 }
