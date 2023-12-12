@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.entando.example</groupId>
     <artifactId>spring-ms</artifactId>
-    <version>0.0.9-SNAPSHOT</version>
+    <version>0.0.10-SNAPSHOT</version>
     <name>spring-ms</name>
     <description>Demo project for Spring Boot</description>
     <properties>
