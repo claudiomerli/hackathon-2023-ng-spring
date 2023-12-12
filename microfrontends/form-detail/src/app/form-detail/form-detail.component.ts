@@ -62,20 +62,27 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy{
   ngOnChanges(changes: SimpleChanges): void {
   }
 
+
   ngOnDestroy(): void {
   }
 
   ngOnInit(): void {
-    this.formId = this.activatedRoute.snapshot.paramMap.get("formId")
-    if(!!this.formId){
+    const urlParams = new URLSearchParams(location.search);
+    this.formId = urlParams.get('idForm');
+
+    if(!!this.formId) {
       this.formDetailsServices.getForm(this.formId).pipe(
         tap((res: any) => {
           this.form = JSON.parse(res.structure);
+          this.nomeForm = res.name;
         })
       ).subscribe();
     }
   }
 
+  showHintMessage(){
+    return this.nomeForm=='' ? 'Inserisci il nome della form per salvarla' : '';
+  }
 
   protected readonly onmouseover = onmouseover;
 }

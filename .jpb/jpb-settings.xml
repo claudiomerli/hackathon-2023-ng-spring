@@ -13,7 +13,7 @@
   </component>
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
+      <persistence-unit name="Default" defaultIncludeChangeLogFile="microservices/spring-ms/src/main/resources/db/changelog/db.changelog-master.yaml">
         <packages>
           <package value="com.entando.example.springms" />
         </packages>

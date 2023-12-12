@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
 import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.annotations.UuidGenerator;
 
 @Entity
@@ -13,7 +14,9 @@ import org.hibernate.annotations.UuidGenerator;
 @Builder
 @Getter
 @Setter
+@SQLRestriction("deleted is false")
 public class Form {
+
     @UuidGenerator
     @Id
     private String id;
@@ -23,5 +26,7 @@ public class Form {
 
     @Formula("(select count(*) from form_answer fa where fa.form_id = id)")
     private Integer answerCount;
+
+    private Boolean deleted;
 
 }
