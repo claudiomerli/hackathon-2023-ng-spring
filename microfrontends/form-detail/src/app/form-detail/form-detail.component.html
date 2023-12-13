@@ -2,10 +2,13 @@
   <form role="form" class="form-class">
     <div class="form-content">
       <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon"></span>
-          <input required type="text" [(ngModel)]="nomeForm" name="nomeForm" class="form-control"
-                 id="nomeForm" [placeholder]="'Inserisci il nome della form'">
+        <div class="row">
+          <label class="nome-form">Nome form:</label>
+          <div class="input-group">
+            <span class="input-group-addon"></span>
+            <input type="text" [(ngModel)]="nomeForm" name="nomeForm" class="form-control"
+                   id="nomeForm" [placeholder]="'Inserisci il nome della form'">
+          </div>
         </div>
       </div>
     </div>
