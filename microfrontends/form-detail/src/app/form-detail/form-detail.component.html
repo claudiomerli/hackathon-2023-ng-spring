@@ -19,4 +19,5 @@
   </div>
   <hr class="linea">
   <button type="button" class="btn btn-success" (click)="salvaForm()" [disabled]="nomeForm==''">Salva Form</button>
+  <button *ngIf="!!formId && form!=''" type="button" class="btn btn-danger" (click)="openConfirmationDialog(form)">Elimina Form</button>
 </div>

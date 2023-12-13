@@ -1,6 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import "bootswatch/dist/cosmo/_variables.scss";
-@import "bootstrap/scss/bootstrap.scss";
-@import "bootswatch/dist/cosmo/_bootswatch.scss";
-$fa-font-path: '~font-awesome/fonts';
-@import 'font-awesome/scss/font-awesome';
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "bootstrap-icons/font/bootstrap-icons";
+
+.form-class {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.modal{
+  z-index: 1060;
+}

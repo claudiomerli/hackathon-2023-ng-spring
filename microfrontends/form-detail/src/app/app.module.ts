@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormDetailsServices} from "./services/form-details.services";
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
 import {RouterTestingModule} from "@angular/router/testing";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {RouterTestingModule} from "@angular/router/testing";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterTestingModule
+    RouterTestingModule,
+    NgbModule
   ],
   providers: [
     FormDetailsServices,
