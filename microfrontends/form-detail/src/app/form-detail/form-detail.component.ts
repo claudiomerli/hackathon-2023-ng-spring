@@ -1,14 +1,11 @@
 import {
   Component,
-  ElementRef,
   OnChanges,
   OnDestroy,
   OnInit,
-  SimpleChanges,
-  ViewChild
+  SimpleChanges
 } from '@angular/core';
 import {FormDetailsServices} from "../services/form-details.services";
-import {ActivatedRoute} from "@angular/router";
 import {tap} from "rxjs";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {NgbdModalContent} from "./confirm-dialog";

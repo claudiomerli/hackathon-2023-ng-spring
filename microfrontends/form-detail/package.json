@@ -24,6 +24,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "rxjs": "~7.8.0",
+    "survey-angular-ui": "^1.9.121",
     "survey-creator-angular": "^1.9.121",
     "survey-creator-core": "^1.9.121",
     "tslib": "^2.3.0",
