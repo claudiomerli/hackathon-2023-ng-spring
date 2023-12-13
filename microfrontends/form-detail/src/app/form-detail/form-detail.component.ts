@@ -104,4 +104,8 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
       }
     })
   }
+
+  redirectToHomepage() {
+    location.href = "https://entando.eng-entando.com/entando-de-app/en/lista_form.page";
+  }
 }
