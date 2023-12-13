@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit{
   idForm: string | undefined
   idAnswer: string | undefined
-  constructor(private location: Location) {}
+  constructor() {}
   ngOnInit() {
 
     this.getParams()

@@ -1,82 +1,96 @@
 {
-    "microservices": [
-        {
-            "name": "spring-ms",
-            "stack": "spring-boot",
-            "healthCheckPath": "/api/health",
-            "dbms": "postgresql"
-        }
-    ],
-    "microfrontends": [
-        {
-            "name": "form-answer-create",
-            "customElement": "form-answer-create",
-            "stack": "angular",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "buildFolder": "dist/form-answer-create",
-            "titles": {
-                "en": "form-answer-create",
-                "it": "form-answer-create"
-            }
-        },
-        {
-            "name": "answer-list",
-            "customElement": "answer-list",
-            "stack": "angular",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "buildFolder": "dist/answer-list",
-            "titles": {
-                "en": "answer-list",
-                "it": "answer-list"
-            }
-        },
-        {
-            "name": "form-list",
-            "customElement": "form-list",
-            "stack": "angular",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "buildFolder": "dist/form-list",
-            "titles": {
-                "en": "form-list",
-                "it": "form-list"
-            }
-        },
-        {
-            "name": "form-detail",
-            "customElement": "form-detail",
-            "stack": "angular",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "buildFolder": "dist/form-detail",
-            "titles": {
-                "en": "form-detail",
-                "it": "form-detail"
-            }
-        },
-        {
-            "name": "stats-pie-chart",
-            "customElement": "stats-pie-chart",
-            "stack": "angular",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "titles": {
-                "en": "stats-pie-chart",
-                "it": "stats-pie-chart"
-            }
-        }
-    ],
-    "svc": [],
-    "name": "hackathon-2023-ng-spring",
-    "version": "0.0.1",
-    "description": "hackathon-2023-ng-spring description",
-    "type": "bundle",
-    "descriptorVersion": "v5"
+  "microservices": [
+    {
+      "name": "spring-ms",
+      "stack": "spring-boot",
+      "healthCheckPath": "/api/health",
+      "dbms": "postgresql"
+    }
+  ],
+  "microfrontends": [
+    {
+      "name": "form-answer-create",
+      "customElement": "form-answer-create",
+      "stack": "angular",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "buildFolder": "dist/form-answer-create",
+      "titles": {
+        "en": "form-answer-create",
+        "it": "form-answer-create"
+      }
+    },
+    {
+      "name": "answer-list",
+      "customElement": "answer-list",
+      "stack": "angular",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "buildFolder": "dist/answer-list",
+      "titles": {
+        "en": "answer-list",
+        "it": "answer-list"
+      }
+    },
+    {
+      "name": "form-list",
+      "customElement": "form-list",
+      "stack": "angular",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "buildFolder": "dist/form-list",
+      "titles": {
+        "en": "form-list",
+        "it": "form-list"
+      }
+    },
+    {
+      "name": "form-detail",
+      "customElement": "form-detail",
+      "stack": "angular",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "buildFolder": "dist/form-detail",
+      "titles": {
+        "en": "form-detail",
+        "it": "form-detail"
+      }
+    },
+    {
+      "name": "common-header",
+      "customElement": "common-header",
+      "stack": "angular",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "buildFolder": "dist/common-header",
+      "titles": {
+        "en": "common-header",
+        "it": "common-header"
+      }
+    },
+    {
+      "name": "form-answer-statistics",
+      "customElement": "form-answer-statistics",
+      "stack": "angular",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "buildFolder": "dist/form-answer-statistics",
+      "titles": {
+        "en": "form-answer-statistics",
+        "it": "form-answer-statistics"
+      }
+    }
+  ],
+  "svc": [],
+  "name": "hackathon-2023-ng-spring",
+  "version": "0.0.1",
+  "description": "hackathon-2023-ng-spring description",
+  "type": "bundle",
+  "descriptorVersion": "v5"
 }
