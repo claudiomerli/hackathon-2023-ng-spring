@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'common-header';
+
+
+  checkRoute(pageName: string){
+    return window.location.href.includes(pageName)
+  }
 }

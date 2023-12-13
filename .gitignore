@@ -3,3 +3,4 @@
 microservices/spring-ms/target
 /microservices/spring-ms/spring-ms.iml
 /node_modules
+/microfrontends/form-answer-create/package-lock.json

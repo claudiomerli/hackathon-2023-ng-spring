@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Nando Forms</a>
+  <a class="navbar-brand application-name" style="margin-left: 1rem">Nando Forms</a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,10 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="https://entando.eng-entando.com/entando-de-app/en/lista_form.page">Home</a>
+        <a class="nav-link {{checkRoute('lista_form.page')? 'highlight':''}}" href="https://entando.eng-entando.com/entando-de-app/en/lista_form.page">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://entando.eng-entando.com/entando-de-app/en/lista_risposte.page">Lista Risposte</a>
+        <a class="nav-link {{checkRoute('lista_risposte.page')? 'highlight':''}}" href="https://entando.eng-entando.com/entando-de-app/en/lista_risposte.page">Lista Risposte</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{checkRoute('statistiche.page')? 'highlight':''}}" href="https://entando.eng-entando.com/entando-de-app/en/statistiche.page">Statistiche</a>
       </li>
     </ul>
   </div>
