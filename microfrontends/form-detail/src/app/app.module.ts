@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormDetailsServices} from "./services/form-details.services";
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
 import {RouterTestingModule} from "@angular/router/testing";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {SurveyCreatorModule} from "survey-creator-angular";
 
 @NgModule({
@@ -22,7 +22,8 @@ import {SurveyCreatorModule} from "survey-creator-angular";
     HttpClientModule,
     RouterTestingModule,
     NgbModule,
-    SurveyCreatorModule
+    SurveyCreatorModule,
+    NgbTooltipModule
   ],
   providers: [
     FormDetailsServices,

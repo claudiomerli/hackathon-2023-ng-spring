@@ -24,6 +24,6 @@ export class FormAnswerService {
   }
 
   postFormAnswer(body: any){
-    return this.httpClient.post<any>(envBaseUrl+`/api/forms-answers/`, body)
+    return this.httpClient.post<any>(envBaseUrl+`/api/forms-answers`, body)
   }
 }
