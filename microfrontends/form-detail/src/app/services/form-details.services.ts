@@ -33,4 +33,9 @@ export class FormDetailsServices {
     return this.httpClient.get(`https://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure/${formId}`,
     );
   }
+
+  public deleteForm(formId: any, observe?: 'events', reportProgress?: boolean){
+    return this.httpClient.delete(`https://entando.eng-entando.com/hackathon-2023-ng-spring-213f4f96/spring-ms/api/forms-structure/${formId}`,
+    );
+  }
 }

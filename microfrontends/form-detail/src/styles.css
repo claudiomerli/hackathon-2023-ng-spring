@@ -1,0 +1,11 @@
+/* Importing Bootstrap SCSS file. */
+.form-class {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.svc-creator__banner {
+  display: none;
+}

@@ -14,9 +14,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <form-builder [form]="form" (change?)="onChange($event)"></form-builder>
+      <survey-creator [model]="surveyCreatorModel"></survey-creator>
     </div>
   </div>
   <hr class="linea">
   <button type="button" class="btn btn-success" (click)="salvaForm()" [disabled]="nomeForm==''">Salva Form</button>
+  <button *ngIf="!!formId && form!=''" type="button" class="btn btn-danger" (click)="openConfirmationDialog(form)">Elimina Form</button>
+<!--  <button  type="button" class="btn btn-danger" (click)="openConfirmationDialog(form)">Elimina Form</button>-->
 </div>
