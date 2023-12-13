@@ -85,15 +85,23 @@ convertToCSV(objArray: string | Form[], headerList: string[]) {
     let str = '';
     let row = '';
     for (let index in headerList) {
-    row += headerList[index] + ',';
+      if(headerList[index] == 'name'){
+        row += 'Questionario,';
+      }else if(headerList[index] == 'answerCount'){
+        row += 'Numero risposte,';
+      }
     }
     row = row.slice(0, -1);
     str += row + '\r\n';
     for (let i = 0; i < array.length; i++) {
     let line = '';
     for (let index in headerList) {
+      var separator = ',';
+      if(index >= '1'){
+        separator = '';
+      }
       let head = headerList[index];
-      line +=  array[i][head] + ',';
+      line +=  array[i][head] + separator;
     }
     str += line + '\r\n';
     }

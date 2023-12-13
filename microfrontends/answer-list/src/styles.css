@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.ico-column{
+    text-align: right;
+}
+
+.filtro-questionario{
+    margin-bottom: 15px;
+}
+
+.export-csv{
+    text-align: right;
+}
+
+.ico-download{
+    cursor: pointer;
+}
