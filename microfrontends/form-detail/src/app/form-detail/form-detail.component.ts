@@ -21,7 +21,6 @@ import {SurveyCreatorModel} from "survey-creator-core";
 })
 export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
 
-  @ViewChild('json') jsonElement?: ElementRef;
   public form: any = {
     components: []
   };
@@ -38,23 +37,12 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
   ) {
   }
 
-  onChange(event: any) {
-    if (!!this.jsonElement) {
-      this.jsonElement.nativeElement.innerHTML = '';
-      this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(event.form, null, 4)));
-    }
-  }
-
   salvaForm() {
-    if (!!this.jsonElement) {
-      this.jsonElement.nativeElement.innerHTML = '';
-      this.jsonElement.nativeElement.appendChild(document.createTextNode(JSON.stringify(this.form, null, 4)));
-    }
     if (!!this.formId) {
       let objectToSave = {
         id: this.formId,
         name: this.nomeForm,
-        structure: JSON.stringify(this.form)
+        structure: this.form
       }
       this.formDetailsServices.putForm(objectToSave).subscribe(() => {
         location.href = "https://entando.eng-entando.com/entando-de-app/en/lista_form.page"
@@ -62,7 +50,7 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       let objectToSave = {
         name: this.nomeForm,
-        structure: JSON.stringify(this.form)
+        structure: this.form
       }
       this.formDetailsServices.postForm(objectToSave).subscribe(() => {
         location.href = "https://entando.eng-entando.com/entando-de-app/en/lista_form.page"
@@ -84,11 +72,18 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
     if (!!this.formId) {
       this.formDetailsServices.getForm(this.formId).pipe(
         tap((res: any) => {
-          this.form = JSON.parse(res.structure);
+          this.form = res.structure;
           this.nomeForm = res.name;
+          this.surveyCreatorModel.text = this.form
         })
       ).subscribe();
     }
+
+    this.surveyCreatorModel.saveSurveyFunc = () => {
+      this.form = this.surveyCreatorModel.text
+    }
+
+
   }
 
   showHintMessage() {
