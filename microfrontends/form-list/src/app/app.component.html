@@ -32,8 +32,8 @@ Si è verificato un errore nella ricerca dei form!
   </tbody>
 </table>
 
-<div *ngIf="list.length != 0" class="d-flex justify-content-between p-2">
-	<ngb-pagination
+<div  class="d-flex justify-content-between p-2">
+	<ngb-pagination *ngIf="list.length != 0"
 		[collectionSize]="collectionSize"
 		[(page)]="page"
 		[pageSize]="pageSize"
