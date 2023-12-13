@@ -24,7 +24,7 @@ public class Form {
     @Column(columnDefinition = "text")
     private String structure;
 
-    @Formula("(select count(*) from form_answer fa where fa.form_id = id)")
+    @Formula("(select count(*) from form_answer fa where fa.deleted is false and fa.form_id = id)")
     private Integer answerCount;
 
     @Builder.Default
