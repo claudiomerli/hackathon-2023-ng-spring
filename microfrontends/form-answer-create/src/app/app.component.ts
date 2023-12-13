@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'form-answer-create';
   idForm: string | undefined
   idAnswer: string | undefined
   constructor(private location: Location) {}
@@ -18,8 +16,7 @@ export class AppComponent implements OnInit{
   }
 
   getParams(){
-    const url = this.location.path();
-    const urlParams = new URLSearchParams(url.split('?')[1]);
+    const urlParams = new URLSearchParams(location.search);
     const paramIdForm = urlParams.get('idForm');
     const paramIdAnswer = urlParams.get('idAnswer');
     console.log('idForm:', paramIdForm);
