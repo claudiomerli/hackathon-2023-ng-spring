@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormAnswerService} from "../../service/form-answer.service";
-import bootstrap4 from '@formio/bootstrap/bootstrap4';
-import { Formio } from 'formiojs';
-
+import { Model } from "survey-core";
 @Component({
   selector: 'app-form-loader',
   templateUrl: './form-loader.component.html',
@@ -13,7 +11,7 @@ export class FormLoaderComponent implements OnInit {
   formStruct: any
   showToast: boolean = false;
   toastBody = 'Form salvato correttamente';
-
+  surveyModel!: Model;
   @Input() idForm: string = "";
   @Input() idAnswer: string = "";
 
@@ -21,7 +19,8 @@ export class FormLoaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    Formio.use(bootstrap4);
+
+
     if(this.idForm){
       this.loadForm()
     }else{
@@ -31,13 +30,19 @@ export class FormLoaderComponent implements OnInit {
 
   loadForm() {
     this.formAnswerService.getFormStructure(this.idForm).subscribe({
-      next: (value: any) => this.formStruct = JSON.parse(value.structure),
+      next: (value: any) => {
+        this.surveyModel = new Model(value.structure);
+        this.surveyModel.onComplete.add(sender => this.submitAnswer(sender))
+      },
       error: (err: any) => console.log(err)
     })
   }
 
   loadCompiledForm() {
-    this.formAnswerService.getAnswer(this.idAnswer).subscribe(value => console.log(value))
+    this.formAnswerService.getAnswer(this.idAnswer).subscribe(value => {
+      this.surveyModel = new Model(value.structureForm)
+      this.surveyModel.data = value.structure;
+    })
   }
 
 
