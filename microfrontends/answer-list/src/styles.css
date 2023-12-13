@@ -6,3 +6,11 @@
 .filtro-questionario{
     margin-bottom: 15px;
 }
+
+.export-csv{
+    text-align: right;
+}
+
+.ico-download{
+    cursor: pointer;
+}

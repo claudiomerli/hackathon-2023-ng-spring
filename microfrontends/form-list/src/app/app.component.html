@@ -24,9 +24,9 @@ Si è verificato un errore nella ricerca dei form!
       <td>{{item.name}}</td>
       <td>{{item.answerCount}}</td>
       <td class="ico-columns">
-        <a title="" href="{{editURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-pencil-fill"></i></a>
-        <a title="" href="{{detailURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-search"></i></a>
-        <a title="" (click) = "openConfirmationDialog(item)"><i class="bi bi-trash trash-ico"></i></a>
+        <a title="Compila risposta" href="{{editURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-pencil-fill"></i></a>
+        <a title="Vai al dettaglio del questionario" href="{{detailURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-search"></i></a>
+        <a title="Cancella questionario" (click) = "openConfirmationDialog(item)"><i class="bi bi-trash trash-ico"></i></a>
       </td>
     </tr>
   </tbody>
