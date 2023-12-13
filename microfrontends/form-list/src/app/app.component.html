@@ -3,10 +3,10 @@ Si è verificato un errore nella ricerca dei form!
 </ngb-alert>
 
 <ngb-alert *ngIf="list.length == 0 && error == false" type="info" [dismissible]="false">
-	Nessun form da visualizzare!
+	Nessun questionario da visualizzare!
 </ngb-alert>
-<div class="export-csv justify-content-between p-2">
-  <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" (click)=downloadFile() >
+<div *ngIf="list.length != 0" class="export-csv justify-content-between p-2">
+  <a title="Export dati" class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" (click)=downloadFile() >
     <i class="bi bi-filetype-csv"></i>Export
   </a>
 </div>
@@ -14,8 +14,8 @@ Si è verificato un errore nella ricerca dei form!
 <table *ngIf="list.length > 0 && error == false" class="table table-striped survey-column">
   <thead>
     <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Count</th>
+      <th scope="col">Questionario</th>
+      <th scope="col">Numero risposte</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -24,15 +24,15 @@ Si è verificato un errore nella ricerca dei form!
       <td>{{item.name}}</td>
       <td>{{item.answerCount}}</td>
       <td class="ico-columns">
-        <a title="" href="{{editURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-pencil-fill"></i></a>
-        <a title="" href="{{detailURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-search"></i></a>
-        <a title="" (click) = "openConfirmationDialog(item)"><i class="bi bi-trash trash-ico"></i></a>
+        <a title="Compila risposta" href="{{editURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-pencil-fill"></i></a>
+        <a title="Vai al dettaglio del questionario" href="{{detailURL}}{{item.id}}" style="margin-right: 20px;"><i class="bi bi-search"></i></a>
+        <a title="Cancella questionario" (click) = "openConfirmationDialog(item)"><i class="bi bi-trash trash-ico"></i></a>
       </td>
     </tr>
   </tbody>
 </table>
 
-<div class="d-flex justify-content-between p-2">
+<div *ngIf="list.length != 0" class="d-flex justify-content-between p-2">
 	<ngb-pagination
 		[collectionSize]="collectionSize"
 		[(page)]="page"
@@ -40,7 +40,7 @@ Si è verificato un errore nella ricerca dei form!
 		(pageChange)="getList()">
 	</ngb-pagination>
 
-    <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="{{newURL}}">
+    <a title="Crea nuovo questionario" class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="{{newURL}}">
       <i class="bi bi-card-list"></i>Crea questionario
     </a>
 
