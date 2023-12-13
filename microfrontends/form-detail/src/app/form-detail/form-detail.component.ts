@@ -84,7 +84,11 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   showHintMessage() {
-    return this.nomeForm == '' ? 'Inserisci il nome della form per salvarla' : '';
+    return this.nomeForm == "" ? 'Per salvare la form è necessario inserire il nome' : (typeof(this.form) !== 'string' ? 'Per salvare la form è necessario inserire almeno un oggetto' : '');
+  }
+
+  check(){
+    return this.nomeForm=='' || typeof(this.form) !== 'string';
   }
 
   protected readonly onmouseover = onmouseover;
@@ -93,9 +97,11 @@ export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.name = 'World';
     modalRef.closed.subscribe(value => {
-      this.formDetailsServices.deleteForm(this.formId).subscribe(() => {
-        location.href = "https://entando.eng-entando.com/entando-de-app/en/lista_form.page"
-      })
+      if(value === 'Si'){
+        this.formDetailsServices.deleteForm(this.formId).subscribe(() => {
+          location.href = "https://entando.eng-entando.com/entando-de-app/en/lista_form.page"
+        })
+      }
     })
   }
 }
