@@ -14,12 +14,12 @@ import {NgIf} from "@angular/common";
     <div class="modal-body text-center">
       <div class="row row-btn">
         <div class="col-6">
-          <button type="button" class="btn btn-danger" (click)="activeModal.close('No')">
+          <button style="width: 50%" type="button" class="btn btn-danger" (click)="activeModal.close('No')">
             {{'No'}}
           </button>
         </div>
         <div class="col-6">
-          <button type="button" class="btn btn-success" (click)="activeModal.close('Si')">
+          <button style="width: 50%" type="button" class="btn btn-success" (click)="activeModal.close('Si')">
             {{'Si'}}
           </button>
         </div>

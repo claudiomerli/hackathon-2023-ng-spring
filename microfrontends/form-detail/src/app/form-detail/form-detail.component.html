@@ -26,6 +26,7 @@
       <button type="button" class="btn btn-success" (click)="salvaForm()" [disabled]="check()">Salva Form</button>
     </div>
     <button *ngIf="!!formId && form!=''" type="button" class="btn btn-danger" (click)="openConfirmationDialog(form)">Elimina Form</button>
+    <button type="button" class="btn btn-primary" (click)="redirectToHomepage()">Torna alla homepage</button>
   </div>
 </div>
 
