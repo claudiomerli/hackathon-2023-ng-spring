@@ -36,7 +36,7 @@
     <ngb-pagination (pageChange)="onPageChange()" [(page)]="page"
                     [pageSize]="pageSize"
                     [collectionSize]="answers.length"/>
-      <a class="ico-download icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" (click)=downloadFile() >
+      <a title="Export dati" class="ico-download icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" (click)=downloadFile() >
         <i class="bi bi-filetype-csv"></i>Export
       </a>
   </div>
