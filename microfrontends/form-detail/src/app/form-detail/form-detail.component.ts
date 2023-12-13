@@ -12,6 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 import {tap} from "rxjs";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {NgbdModalContent} from "./confirm-dialog";
+import {SurveyCreatorModel} from "survey-creator-core";
 
 @Component({
   selector: 'app-form-detail',
@@ -21,16 +22,18 @@ import {NgbdModalContent} from "./confirm-dialog";
 export class FormDetailComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild('json') jsonElement?: ElementRef;
-  @ViewChild('formio') formio: any;
   public form: any = {
     components: []
   };
   nomeForm = "";
   formId: any = undefined;
+  surveyCreatorModel: SurveyCreatorModel = new SurveyCreatorModel({
+    showLogicTab: true,
+    isAutoSave: true
+  });
 
   constructor(
     protected formDetailsServices: FormDetailsServices,
-    protected activatedRoute: ActivatedRoute,
     private modalService: NgbModal
   ) {
   }
