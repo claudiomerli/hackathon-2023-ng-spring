@@ -64,6 +64,9 @@ export class FormLoaderComponent implements OnInit {
     console.log(answerData)
     this.showToast = true;
     let /*the*/ body = this.generateBody(answerData.data)//hit the floor
-    this.formAnswerService.postFormAnswer(body).subscribe(() => this.showToast = true)
+    this.formAnswerService.postFormAnswer(body).subscribe((answer) => {
+      // this.showToast = true
+      location.href = `https://entando.eng-entando.com/entando-de-app/en/dettaglio_risposta/page?answerId=${answer.id}`
+    })
   }
 }
